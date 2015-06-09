@@ -1,6 +1,6 @@
 {
   "name": "react-container",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Container",
   "main": "src/Container.js",
   "author": "Jed Watson",
