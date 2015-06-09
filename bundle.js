@@ -34,8 +34,17 @@ var Container = React.createClass({
 		grow: React.PropTypes.bool,
 		fill: React.PropTypes.bool
 	},
+	componentDidMount: function componentDidMount() {
+		if (this.props.scrollable && this.props.scrollable.mount) {
+			this.props.scrollable.mount(this);
+		}
+	},
+	componentWillUnmount: function componentWillUnmount() {
+		if (this.props.scrollable && this.props.scrollable.unmount) {
+			this.props.scrollable.unmount(this);
+		}
+	},
 	render: function render() {
-
 		var direction = this.props.direction;
 		if (!direction) {
 			if (hasChildrenWithVerticalFill(this.props.children)) {
@@ -68,7 +77,7 @@ var Container = React.createClass({
 			'Container--scrollable': this.props.scrollable
 		});
 
-		var props = blacklist(this.props, 'className', 'direction', 'fill', 'justify');
+		var props = blacklist(this.props, 'className', 'direction', 'fill', 'justify', 'scrollable');
 
 		return React.createElement(
 			'div',
@@ -77,6 +86,29 @@ var Container = React.createClass({
 		);
 	}
 });
+
+function initScrollable() {
+	var pos;
+	var scrollable = {
+		reset: function reset() {
+			pos = { left: 0, top: 0 };
+		},
+		mount: function mount(element) {
+			var node = React.findDOMNode(element);
+			node.scrollLeft = pos.left;
+			node.scrollTop = pos.top;
+		},
+		unmount: function unmount(element) {
+			var node = React.findDOMNode(element);
+			pos.left = node.scrollLeft;
+			pos.top = node.scrollTop;
+		}
+	};
+	scrollable.reset();
+	return scrollable;
+}
+
+Container.initScrollable = initScrollable;
 
 exports['default'] = Container;
 module.exports = exports['default'];
