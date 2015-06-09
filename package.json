@@ -2,7 +2,7 @@
   "name": "react-container",
   "version": "0.1.0",
   "description": "Container",
-  "main": "src/Container.js",
+  "main": "lib/Container.js",
   "author": "Jed Watson",
   "homepage": "https://github.com/JedWatson/react-container",
   "repository": {
