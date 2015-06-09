@@ -1,0 +1,53 @@
+{
+  "name": "react-container",
+  "version": "0.0.0",
+  "description": "Container",
+  "main": "src/Container.js",
+  "author": "Jed Watson",
+  "homepage": "https://github.com/JedWatson/react-container",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JedWatson/react-container.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JedWatson/react-container/issues"
+  },
+  "dependencies": {
+    "blacklist": "^1.1.2",
+    "classnames": "^2.1.2",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^3.1.14",
+    "eslint": "^0.22.1",
+    "eslint-plugin-react": "^2.5.0",
+    "react-component-gulp-tasks": "^0.7.0",
+    "gulp": "^3.9.0"
+  },
+  "browserify-shim": {
+    "react": "global:React"
+  },
+  "scripts": {
+    "build": "gulp clean && NODE_ENV=production gulp build",
+    "examples": "gulp dev:server",
+    "lint": "eslint ./; true",
+    "publish:site": "gulp publish:examples",
+    "release": "gulp release",
+    "start": "gulp dev",
+    "test": "echo \"no tests yet\" && exit 0",
+    "watch": "gulp watch:lib"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "container",
+    "scroll",
+    "mobile",
+    "app",
+    "flex",
+    "flexbox",
+    "touchstone",
+    "touchstonejs",
+    "ios"
+  ]
+}
