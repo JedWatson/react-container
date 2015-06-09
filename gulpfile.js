@@ -15,11 +15,15 @@ var taskConfig = {
 	component: {
 		name: 'Container',
 		dependencies: [
+			'blacklist',
 			'classnames',
-			'react',
-			'react/addons'
+			'react'
 		],
-		lib: 'lib'
+		lib: 'lib',
+		less: {
+			path: 'less',
+			entry: 'component.less'
+		}
 	},
 
 	example: {

@@ -1,0 +1,144 @@
+//
+// Container
+// ==============================
+
+
+
+
+// Handle arrangement of containers in relation to each other
+// ------------------------------
+
+.Container--fill {
+	height: 100%;
+
+	> .Container--fill {
+		#react-container .Container--grow();
+	}
+}
+
+/*
+ * 1. create a flexible layout, either `column` or `row`
+ * 2. flex-column elements collapse horizontally, so we stretch them out again
+ **/
+
+.Container--direction-column,
+.Container--direction-row {
+	#react-container .display-flex(); // #1
+	max-height: 100%;
+	width: 100%; // #2
+
+	> .ViewManager,
+	> .Container--fill {
+		#react-container .Container--grow();
+	}
+
+}
+.Container--direction-column {
+	#react-container .flex-direction(column); // #1
+}
+
+.Container--direction-row {
+	#react-container .flex-direction(row); // #1
+	
+	> .Container--fill {
+		height: auto;
+		width: auto;
+	}
+}
+
+
+// Handle alignment of containers' children
+
+.Container--align-end {
+	#react-container .align-items(flex-end);
+}
+.Container--align-center {
+	#react-container .align-items(center);
+}
+.Container--align-start {
+	#react-container .align-items(flex-start);
+}
+
+
+// Handle justification of containers' children
+
+.Container--justified {
+	#react-container .justify-content(space-around);
+}
+.Container--justify-end {
+	#react-container .justify-content(flex-end);
+}
+.Container--justify-center {
+	#react-container .justify-content(center);
+}
+.Container--justify-start {
+	#react-container .justify-content(flex-start);
+}
+
+
+// Scrollable containers
+
+.Container--scrollable {
+	max-height: 100%;
+	overflow: scroll;
+	position: relative;
+	-webkit-overflow-scrolling: touch;
+
+	// introduce iOS style springy scrolling
+	&:before,
+	&:after {
+		content: "";
+		height: 1px;
+		position: absolute;
+		width: 1px;
+	}
+
+	&:before {
+		bottom: -1px;
+	}
+	&:after {
+		top: -1px;
+	}
+}
+
+
+
+// Mixins
+// ------------------------------
+
+#react-container {
+	.display-flex {
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	.flex(@fg: 1, @fs: '', @fb: '') {
+		-webkit-flex: @fg @fs @fb;
+		-ms-flex: @fg @fs @fb;
+		flex: @fg @fs @fb;
+	}
+	.flex-direction(@value: row) {
+		-webkit-flex-direction: @value;
+		-ms-flex-direction: @value;
+		flex-direction: @value;
+	}
+	.align-items(@value: stretch) {
+		-webkit-align-items: @value;
+		align-items: @value;
+	}
+	.justify-content(@value: stretch) {
+		-webkit-justify-content: @value;
+		justify-content: @value;
+	}
+
+	/*
+	 * 1. fill available vertical space without resorting to "height: 100%", which
+	 *    yields undesirable results
+	 * 2. relatively positioned so ".NewView" descendents will fill correctly
+	 **/
+
+	.Container--grow {
+		#react-container .flex(1,1,0); // #1
+		position: relative; // #2
+	}
+}
