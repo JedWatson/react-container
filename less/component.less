@@ -63,6 +63,11 @@
 }
 .Container--align-center {
 	#react-container .align-items(center);
+
+	// center children as users may expect
+	.Container--direction-column > & {
+		text-align: center;
+	}
 }
 .Container--align-start {
 	#react-container .align-items(flex-start);
