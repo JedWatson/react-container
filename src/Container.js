@@ -6,10 +6,11 @@ function hasChildrenWithVerticalFill(children) {
 	var result = false;
 
 	React.Children.forEach(children, (c) => {
-		if (c.type && c.type.shouldFillVerticalSpace) {
-			result = true;
-			return;
-		}
+		if (result) return; // early-exit
+		if (!c) return;
+		if (!c.type) return
+		
+		result = !!c.type.shouldFillVerticalSpace;
 	});
 
 	return result;
