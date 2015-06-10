@@ -5,27 +5,35 @@
 
 
 
-// Handle arrangement of containers in relation to each other
+// Fill Container
+// 
 // ------------------------------
 
+/**
+ * Fill Container
+ * 1. on its own - fill available vertical space
+ * 2. as a child - flex to fill vertical space
+ */
+
 .Container--fill {
-	height: 100%;
+	height: 100%; // 1
 
 	> .Container--fill {
-		#react-container .Container--grow();
+		#react-container .Container--grow(); // 2
 	}
 }
 
-/*
+/**
+ * Container Layout
  * 1. create a flexible layout, either `column` or `row`
  * 2. flex-column elements collapse horizontally, so we stretch them out again
- **/
+ */
 
 .Container--direction-column,
 .Container--direction-row {
-	#react-container .display-flex(); // #1
+	#react-container .display-flex(); // 1
 	max-height: 100%;
-	width: 100%; // #2
+	width: 100%; // 2
 
 	> .ViewManager,
 	> .Container--fill {
@@ -33,12 +41,13 @@
 	}
 
 }
+
 .Container--direction-column {
-	#react-container .flex-direction(column); // #1
+	#react-container .flex-direction(column); // 1
 }
 
 .Container--direction-row {
-	#react-container .flex-direction(row); // #1
+	#react-container .flex-direction(row); // 1
 	
 	> .Container--fill {
 		height: auto;
@@ -131,14 +140,14 @@
 		justify-content: @value;
 	}
 
-	/*
+	/**
 	 * 1. fill available vertical space without resorting to "height: 100%", which
 	 *    yields undesirable results
 	 * 2. relatively positioned so ".NewView" descendents will fill correctly
-	 **/
+	 */
 
 	.Container--grow {
-		#react-container .flex(1,1,0); // #1
-		position: relative; // #2
+		#react-container .flex(1,1,0); // 1
+		position: relative; // 2
 	}
 }
