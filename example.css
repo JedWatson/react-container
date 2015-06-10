@@ -2,6 +2,11 @@
 // Examples Stylesheet
 // -------------------
 */
+/**
+ * Fill Container
+ * 1. on its own - fill available vertical space
+ * 2. as a child - flex to fill vertical space
+ */
 .Container--fill {
   height: 100%;
 }
@@ -11,10 +16,11 @@
   flex: 1 1 0;
   position: relative;
 }
-/*
+/**
+ * Container Layout
  * 1. create a flexible layout, either `column` or `row`
  * 2. flex-column elements collapse horizontally, so we stretch them out again
- **/
+ */
 .Container--direction-column,
 .Container--direction-row {
   display: -webkit-flex;
@@ -53,6 +59,9 @@
 .Container--align-center {
   -webkit-align-items: center;
   align-items: center;
+}
+.Container--direction-column > .Container--align-center {
+  text-align: center;
 }
 .Container--align-start {
   -webkit-align-items: flex-start;
@@ -94,11 +103,11 @@
   top: -1px;
 }
 #react-container {
-  /*
+  /**
 	 * 1. fill available vertical space without resorting to "height: 100%", which
 	 *    yields undesirable results
 	 * 2. relatively positioned so ".NewView" descendents will fill correctly
-	 **/
+	 */
 }
 #react-container .display-flex {
   display: -webkit-flex;
