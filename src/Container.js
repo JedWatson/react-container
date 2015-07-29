@@ -9,7 +9,7 @@ function hasChildrenWithVerticalFill(children) {
 		if (result) return; // early-exit
 		if (!c) return;
 		if (!c.type) return
-		
+
 		result = !!c.type.shouldFillVerticalSpace;
 	});
 
@@ -20,12 +20,16 @@ var Container = React.createClass({
 	propTypes: {
 		align: React.PropTypes.oneOf(['end', 'center', 'start']),
 		direction: React.PropTypes.oneOf(['column', 'row']),
+		fill: React.PropTypes.bool,
+		grow: React.PropTypes.bool,
 		justify: React.PropTypes.oneOfType([
 			React.PropTypes.bool,
 			React.PropTypes.oneOf(['end', 'center', 'start'])
 		]),
-		grow: React.PropTypes.bool,
-		fill: React.PropTypes.bool
+		scrollable: React.PropTypes.oneOfType([
+			React.PropTypes.bool,
+			React.PropTypes.object
+		])
 	},
 	componentDidMount () {
 		if (this.props.scrollable && this.props.scrollable.mount) {
