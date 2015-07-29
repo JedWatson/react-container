@@ -84,11 +84,17 @@ var Container = React.createClass({
 	}
 });
 
-function initScrollable() {
+function initScrollable(defaultPos) {
+	if (!defaultPos) {
+		defaultPos = {};
+	}
 	var pos;
 	var scrollable = {
 		reset () {
-			pos = { left: 0, top: 0 };
+			pos = { left: defaultPos.left || 0, top: defaultPos.top || 0 };
+		},
+		getPos () {
+			return { left: pos.left, top: pos.top };
 		},
 		mount (element) {
 			var node = React.findDOMNode(element);
