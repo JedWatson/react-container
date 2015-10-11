@@ -1,6 +1,6 @@
 {
   "name": "react-container",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Container",
   "main": "dist/react-container.min.js",
   "homepage": "https://github.com/JedWatson/react-container",
