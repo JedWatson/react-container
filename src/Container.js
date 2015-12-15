@@ -1,6 +1,7 @@
 var blacklist = require('blacklist');
 var classnames = require('classnames');
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 function hasChildrenWithVerticalFill(children) {
 	var result = false;
@@ -97,12 +98,12 @@ function initScrollable(defaultPos) {
 			return { left: pos.left, top: pos.top };
 		},
 		mount (element) {
-			var node = React.findDOMNode(element);
+			var node = ReactDOM.findDOMNode(element);
 			node.scrollLeft = pos.left;
 			node.scrollTop = pos.top;
 		},
 		unmount (element) {
-			var node = React.findDOMNode(element);
+			var node = ReactDOM.findDOMNode(element);
 			pos.left = node.scrollLeft;
 			pos.top = node.scrollTop;
 		}
