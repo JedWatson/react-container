@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Container = require('react-container');
 
 var App = React.createClass({
@@ -13,7 +14,7 @@ var App = React.createClass({
 						<Container style={{ background: 'white' }} fill>
 							<Container scrollable>
 								{items.map((i) => {
-									return <div style={{ padding: 10 }}>Item {i}</div>;
+									return <div key={i} style={{ padding: 10 }}>Item {i}</div>;
 								})}
 							</Container>
 						</Container>
@@ -24,4 +25,4 @@ var App = React.createClass({
 	}
 });
 
-React.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
